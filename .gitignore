@@ -1,0 +1,21 @@
+# Java (Spring Boot)
+inventory-backend/target/
+inventory-backend/.mvn/wrapper/maven-wrapper.jar
+inventory-backend/.idea/
+inventory-backend/*.iml
+inventory-backend/uploads/
+inventory-backend/help.md
+
+# React (Frontend)
+inventory-frontend/node_modules/
+
+
+# Python (AI Service)
+inventory-ai-service/__pycache__/
+inventory-ai-service/venv/
+inventory-ai-service/.env
+*.pyc
+
+# OS System Files
+.DS_Store
+Thumbs.db

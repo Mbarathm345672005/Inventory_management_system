@@ -1,0 +1,193 @@
+/* src/App.css */
+
+/* =========================================
+   1. GLOBAL VARIABLES & THEME
+   ========================================= */
+:root {
+  /* Gradients */
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  --danger-gradient: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+  --info-gradient: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+  --dark-gradient: linear-gradient(135deg, #434343 0%, #000000 100%);
+
+  /* Colors */
+  --bg-color: #f3f4f6;
+  --card-bg: #ffffff;
+  --text-primary: #2d3748;
+  --text-secondary: #718096;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  --shadow-md: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.11), 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================================
+   2. GLOBAL RESETS & TYPOGRAPHY
+   ========================================= */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* =========================================
+   3. MODERN CARD STYLING
+   ========================================= */
+.custom-card, .card, .product-card, .feature-card {
+  border: none !important;
+  border-radius: 16px !important;
+  background: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden; /* Keeps header corners rounded */
+}
+
+.custom-card:hover, .card:hover, .product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Card Headers */
+.card-header-modern, .card-header {
+  color: white !important;
+  border-bottom: none;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+  letter-spacing: 0.5px;
+  /* Default background if inline style is missing */
+  background: var(--primary-gradient); 
+}
+
+/* =========================================
+   4. MODERN BUTTON STYLING
+   ========================================= */
+.btn-modern, .btn {
+  border-radius: 50px !important;
+  padding: 10px 25px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
+  border: none !important;
+  transition: all 0.3s ease !important;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-modern:hover, .btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  opacity: 0.95;
+}
+
+/* Gradient Button Variations */
+.btn-primary-modern, .btn-primary {
+  background-image: var(--primary-gradient) !important;
+  color: white !important;
+}
+
+.btn-warning-modern, .btn-warning {
+  background-image: var(--secondary-gradient) !important;
+  color: #1a202c !important;
+}
+
+.btn-success { background-image: var(--success-gradient) !important; border: none; }
+.btn-danger { background-image: var(--danger-gradient) !important; border: none; }
+.btn-info { background-image: var(--info-gradient) !important; color: white !important; }
+
+/* =========================================
+   5. MODERN TABLE STYLING
+   ========================================= */
+.table-modern, .table {
+  border-collapse: separate;
+  border-spacing: 0 8px; /* Spacing between rows */
+  background-color: transparent !important;
+}
+
+.table-modern thead th, .table thead th {
+  border: none;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: #8898aa;
+  background-color: transparent !important;
+  padding: 10px 15px;
+}
+
+.table-modern tbody tr, .table tbody tr {
+  background-color: white;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s;
+}
+
+.table-modern tbody tr:hover, .table tbody tr:hover {
+  transform: scale(1.01);
+  z-index: 2;
+}
+
+.table-modern td, .table td {
+  border: none;
+  vertical-align: middle;
+  padding: 15px !important;
+}
+
+/* Round corners for table rows */
+.table-modern td:first-child, .table td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.table-modern td:last-child, .table td:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* =========================================
+   6. PRODUCT IMAGE ZOOM EFFECT
+   ========================================= */
+.product-img-container {
+  overflow: hidden;
+}
+
+.product-img-hover {
+  transition: transform 0.5s ease;
+}
+
+.custom-card:hover .product-img-hover {
+  transform: scale(1.1);
+}
+
+/* =========================================
+   7. FORMS & BADGES
+   ========================================= */
+.form-control, .form-select {
+  border-radius: 10px !important;
+  border: 1px solid #e2e8f0;
+  padding: 10px 15px;
+  box-shadow: none;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.badge {
+  padding: 0.5em 0.8em !important;
+  border-radius: 6px !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* =========================================
+   8. ANIMATION UTILS
+   ========================================= */
+.animate__fadeInUp {
+  animation-duration: 0.8s;
+}
