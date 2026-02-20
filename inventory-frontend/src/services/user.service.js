@@ -4,7 +4,7 @@ import axios from 'axios';
 const getToken = () => localStorage.getItem('token');
 
 const authAxios = axios.create({
-    baseURL: 'http://localhost:8080',
+    baseURL: process.env.REACT_APP_API_URL || 'http://localhost:8080',
 });
 
 // Interceptor to add token

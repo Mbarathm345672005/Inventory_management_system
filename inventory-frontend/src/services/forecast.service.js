@@ -8,7 +8,7 @@ const getToken = () => {
 // Create an 'axios' instance with the auth header
 // This ensures all requests from this service are authenticated
 const authAxios = axios.create({
-    baseURL: 'http://localhost:8080', // <--- FIXED: Points directly to backend
+    baseURL: process.env.REACT_APP_API_URL || 'http://localhost:8080', // Points to backend
 });
 
 authAxios.interceptors.request.use(

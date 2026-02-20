@@ -9,7 +9,9 @@ from datetime import datetime, timedelta # <--- Make sure this is imported
 app = Flask(__name__)
 CORS(app)
 
-client = MongoClient('mongodb://localhost:27017/')
+import os
+
+client = MongoClient(os.getenv('MONGODB_URI', 'mongodb://localhost:27017/'))
 db = client['inventory_db']
 transactions_collection = db['transactions']
 

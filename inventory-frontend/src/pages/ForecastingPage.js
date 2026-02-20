@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Table, Badge, Button, Spinner, Modal, Alert } from 'react-bootstrap';
 // We assume you have an auth-header helper, if not, standard axios works too
-import axios from 'axios'; 
+import axios from 'axios';
 import ForecastChart from './ForecastChart';
 import ForecastService from '../services/forecast.service'; // Import the new chart component
 
@@ -21,20 +21,21 @@ function ForecastingPage() {
     const fetchForecast = () => {
         setLoading(true);
         // Get token from local storage
-        const token = localStorage.getItem('token'); 
-        
-        axios.get('http://localhost:8080/api/forecast', {
+        const token = localStorage.getItem('token');
+
+        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8080';
+        axios.get(`${apiUrl}/api/forecast`, {
             headers: { 'Authorization': `Bearer ${token}` }
         })
-        .then(response => {
-            setForecasts(response.data);
-            setLoading(false);
-        })
-        .catch(err => {
-            console.error("Error fetching forecast:", err);
-            setError("Failed to load forecast data. Ensure all 3 services (React, Java, Python) are running.");
-            setLoading(false);
-        });
+            .then(response => {
+                setForecasts(response.data);
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error("Error fetching forecast:", err);
+                setError("Failed to load forecast data. Ensure all 3 services (React, Java, Python) are running.");
+                setLoading(false);
+            });
     };
 
     // Helper function to open the chart modal
@@ -67,12 +68,12 @@ function ForecastingPage() {
 
     return (
         <Container className="mt-4">
-<div className="d-flex justify-content-between align-items-center mb-4">
+            <div className="d-flex justify-content-between align-items-center mb-4">
                 <h2 className="text-primary fw-bold">Demand Forecasting Dashboard</h2>
                 <Button variant="success" onClick={handleExport}>
                     <i className="bi bi-file-earmark-spreadsheet-fill me-2"></i> Export Forecast
                 </Button>
-            </div>            
+            </div>
             {/* 7-Day Forecast Section */}
             <div className="p-3 mb-4 bg-primary text-white rounded">
                 <h4>7-Day Forecast & Stock Alert</h4>
@@ -101,7 +102,7 @@ function ForecastingPage() {
                             {forecasts.map(item => (
                                 <tr key={item.productId}>
                                     <td className="fw-bold">{item.productName}</td>
-                                    
+
                                     {/* Current Stock */}
                                     <td className="text-center">
                                         <Badge bg={item.currentStock === 0 ? 'danger' : 'secondary'} className="fs-6">
@@ -129,9 +130,9 @@ function ForecastingPage() {
 
                                         {/* View Trend Button (Only if no error) */}
                                         {!item.action.includes("ERROR") && (
-                                            <Button 
-                                                variant="outline-primary" 
-                                                size="sm" 
+                                            <Button
+                                                variant="outline-primary"
+                                                size="sm"
                                                 className="ms-3"
                                                 onClick={() => handleShowTrend(item)}
                                             >

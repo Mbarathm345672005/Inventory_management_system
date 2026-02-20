@@ -8,6 +8,7 @@ inventory-backend/help.md
 
 # React (Frontend)
 inventory-frontend/node_modules/
+inventory-frontend/.env
 
 
 # Python (AI Service)
